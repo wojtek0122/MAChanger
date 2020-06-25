@@ -16,7 +16,7 @@
         <Label FontSize="20" HorizontalAlignment="Center" Margin="196,209,157,-209" Width="289">Wprowadź nowy MAC adres:</Label>
         <TextBox x:Name="lbl_new_MAC" Height="40" Width="350" Background="LightGray" FontSize="20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="101,220,91,150"></TextBox>
 
-        <Button Height="60" Width="320" Content="Zmień MAC" FontSize="24"  Click="Button_Click" Margin="140,280,132,80"></Button>
+        <Button x:Name="btnChange" Height="60" Width="320" Content="Zmień MAC" FontSize="24" IsEnabled="False" Click="Button_Click" Margin="140,280,132,80"></Button>
         <Label Name="lbl_ok" Visibility="Hidden" FontSize="24" Foreground="Red" Margin="264,381,-264,-381">GOTOWE!</Label>
 
         <Label FontSize="20" HorizontalAlignment="Center" Width="152" Margin="143,32,347,-32">BIOS:</Label>

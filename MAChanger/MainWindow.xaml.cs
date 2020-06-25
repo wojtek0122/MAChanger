@@ -102,11 +102,13 @@ namespace MAChanger
 
         private void cbox_BIOS_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch(cbox_BIOS.SelectedIndex)
+            btnChange.IsEnabled = true;
+            switch (cbox_BIOS.SelectedIndex)
             {
                 case 1: 
                     {
                         selectedItem = 1;
+                        
                         lbl_MAC_E1.Text = _bf.ReadBinary(pathMaster + E1);
                         lbl_MAC_E2.Text = _bf.ReadBinary(pathMaster + E2);
                         lbl_MAC_E2.Visibility = Visibility.Visible;
