@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAChanger", "MAChanger\MAChanger.csproj", "{442D7ED4-A1B9-44DE-A77B-2A40E789783B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{442D7ED4-A1B9-44DE-A77B-2A40E789783B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442D7ED4-A1B9-44DE-A77B-2A40E789783B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442D7ED4-A1B9-44DE-A77B-2A40E789783B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442D7ED4-A1B9-44DE-A77B-2A40E789783B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4951730D-82DE-421D-BB4A-AB6C745674F3}
+	EndGlobalSection
+EndGlobal

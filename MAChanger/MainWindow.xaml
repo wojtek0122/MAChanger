@@ -1,0 +1,31 @@
+﻿<Window x:Class="MAChanger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MAChanger"
+        mc:Ignorable="d"
+        Title="Toshiba 4900E85 MAC changer" Height="500" Width="650" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderBrush="Black" BorderThickness="3">
+    <Grid>
+        <Label FontSize="20" HorizontalAlignment="Center" Margin="252,112,246,-112" Width="152">Aktualny MAC:</Label>
+        <Label x:Name="lbl_name1" FontSize="20" Width="40" HorizontalAlignment="Center" Margin="41,161,569,-161"></Label>
+        <TextBox x:Name="lbl_MAC_E1" IsEnabled="False" Height="40" Width="230" Background="Gray" FontSize="20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="50,120,312,260"></TextBox>
+        <Label x:Name="lbl_name2" FontSize="20" Width="40" HorizontalAlignment="Center" Margin="331,161,279,-161"></Label>
+        <TextBox x:Name="lbl_MAC_E2" IsEnabled="False" Height="40" Width="230" Background="Gray" FontSize="20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="340,120,22,260"/>
+
+        <Label FontSize="20" HorizontalAlignment="Center" Margin="196,209,157,-209" Width="289">Wprowadź nowy MAC adres:</Label>
+        <TextBox x:Name="lbl_new_MAC" Height="40" Width="350" Background="LightGray" FontSize="20" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="101,220,91,150"></TextBox>
+
+        <Button Height="60" Width="320" Content="Zmień MAC" FontSize="24"  Click="Button_Click" Margin="140,280,132,80"></Button>
+        <Label Name="lbl_ok" Visibility="Hidden" FontSize="24" Foreground="Red" Margin="264,381,-264,-381">GOTOWE!</Label>
+
+        <Label FontSize="20" HorizontalAlignment="Center" Width="152" Margin="143,32,347,-32">BIOS:</Label>
+        <ComboBox x:Name="cbox_BIOS" HorizontalAlignment="Left" Height="40" Margin="215,30,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Width="380" SelectionChanged="cbox_BIOS_SelectionChanged" >
+            <ComboBoxItem>ST-M30</ComboBoxItem>
+            <ComboBoxItem>4900-E85</ComboBoxItem>
+        </ComboBox>
+
+        <Button x:Name="exit" Content="Zamknij" FontSize="16" Margin="256,444,254,12" Click="exit_Click"/>
+
+    </Grid>
+</Window>
