@@ -41,47 +41,56 @@ namespace MAChanger
         {           
             if(lbl_new_MAC.Text.Length == 12)
             {
-                switch (selectedItem)
+                if(ValidateMAC(lbl_new_MAC.Text))
                 {
-                    case 1:
-                        {
-                            try
+                    switch (selectedItem)
+                    {
+                        case 1:
                             {
-                                File.Copy(pathMaster + E1, pathOutput + E1 + "-" + lbl_new_MAC.Text);
-                                File.Copy(pathMaster + E2, pathOutput + E2 + "-" + lbl_new_MAC.Text);
-                            }
-                            catch (IOException)
-                            {
+                                try
+                                {
+                                    File.Copy(pathMaster + E1, pathOutput + E1 + "-" + lbl_new_MAC.Text);
+                                    File.Copy(pathMaster + E2, pathOutput + E2 + "-" + lbl_new_MAC.Text);
+                                }
+                                catch (IOException)
+                                {
 
-                            }
-                            _bf.ChangeBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
-                            _bf.ChangeBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
-                            lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text);
-                            lbl_MAC_E2.Text = _bf.ReadBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text);
-                            break;
-                        };
-                    case 0:
-                        {
-                            try
+                                }
+                                _bf.ChangeBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
+                                _bf.ChangeBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
+                                lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text);
+                                lbl_MAC_E2.Text = _bf.ReadBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text);
+                                break;
+                            };
+                        case 0:
                             {
-                                File.Copy(pathMaster + M30, pathOutput + M30 + "-" + lbl_new_MAC.Text);
-                            }
-                            catch (IOException)
-                            {
+                                try
+                                {
+                                    File.Copy(pathMaster + M30, pathOutput + M30 + "-" + lbl_new_MAC.Text);
+                                }
+                                catch (IOException)
+                                {
 
-                            }
-                            _bf.ChangeBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
-                            lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text);
-                            break;
-                        };
+                                }
+                                _bf.ChangeBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
+                                lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text);
+                                break;
+                            };
+                    }
+
+                    lbl_ok.Content = "GOTOWE!";
+                    lbl_ok.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    lbl_ok.Content = "BŁĘDNY MAC!";
+                    lbl_ok.Visibility = Visibility.Visible;
                 }
 
-                lbl_ok.Content = "GOTOWE!";
-                lbl_ok.Visibility = Visibility.Visible;
             }
             else
             {
-                lbl_ok.Content = "BŁĘDNY MAC!";
+                lbl_ok.Content = "BŁĘDNA DŁUGOŚĆ MAC!";
                 lbl_ok.Visibility = Visibility.Visible;
             }
         }
@@ -118,6 +127,17 @@ namespace MAChanger
                     };
             }
 
+        }
+
+        private bool ValidateMAC(string MAC)
+        {
+            System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex("^([0-9a-fA-F][0-9a-fA-F]){5}([0-9a-fA-F][0-9a-fA-F])$");
+            if(r.IsMatch(MAC))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
