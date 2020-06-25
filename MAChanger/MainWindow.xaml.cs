@@ -39,28 +39,51 @@ namespace MAChanger
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {           
-            switch(selectedItem)
+            if(lbl_new_MAC.Text.Length == 12)
             {
-                case 1: 
-                    {
-                        File.Copy(pathMaster + E1, pathOutput + E1 + "-" + lbl_new_MAC.Text);
-                        File.Copy(pathMaster + E2, pathOutput + E2 + "-" + lbl_new_MAC.Text);
-                        _bf.ChangeBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
-                        _bf.ChangeBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
-                        lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text);
-                        lbl_MAC_E2.Text = _bf.ReadBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text);
-                        break; 
-                    };
-                case 0: 
-                    {
-                        File.Copy(pathMaster + M30, pathOutput + M30 + "-" + lbl_new_MAC.Text);
-                        _bf.ChangeBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
-                        lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text);
-                        break; 
-                    };
-            }
+                switch (selectedItem)
+                {
+                    case 1:
+                        {
+                            try
+                            {
+                                File.Copy(pathMaster + E1, pathOutput + E1 + "-" + lbl_new_MAC.Text);
+                                File.Copy(pathMaster + E2, pathOutput + E2 + "-" + lbl_new_MAC.Text);
+                            }
+                            catch (IOException)
+                            {
 
-            lbl_ok.Visibility = Visibility.Visible;
+                            }
+                            _bf.ChangeBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
+                            _bf.ChangeBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
+                            lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + E1 + "-" + lbl_new_MAC.Text);
+                            lbl_MAC_E2.Text = _bf.ReadBinary(pathOutput + E2 + "-" + lbl_new_MAC.Text);
+                            break;
+                        };
+                    case 0:
+                        {
+                            try
+                            {
+                                File.Copy(pathMaster + M30, pathOutput + M30 + "-" + lbl_new_MAC.Text);
+                            }
+                            catch (IOException)
+                            {
+
+                            }
+                            _bf.ChangeBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text, lbl_new_MAC.Text);
+                            lbl_MAC_E1.Text = _bf.ReadBinary(pathOutput + M30 + "-" + lbl_new_MAC.Text);
+                            break;
+                        };
+                }
+
+                lbl_ok.Content = "GOTOWE!";
+                lbl_ok.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lbl_ok.Content = "BŁĘDNY MAC!";
+                lbl_ok.Visibility = Visibility.Visible;
+            }
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
